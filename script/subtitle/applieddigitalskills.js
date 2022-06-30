@@ -12,7 +12,7 @@ class Applieddigitalskills {
                 getSettingData().then(res => {
                     let subtitleMode = res.modeSubtitle;
                     if (subtitleMode === "0") {
-                        Notifycation.confirmSubtitle().then(mode => {
+                        Notifycation.confirmSubtitle(['vi']).then(mode => {
                             if (mode !== 0) {
                                 this.createElement(mode);
                             }
