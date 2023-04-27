@@ -19,3 +19,5 @@
 +) feat/auto_enable_subtitle : để tạo popup cho chương trình
 
 +) Revert “Format file”: quay lại commit Format file
+
+Không bổ sung gì thêm
