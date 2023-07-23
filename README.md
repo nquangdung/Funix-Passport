@@ -1,4 +1,6 @@
 # FUNiX Passport
+FUNiX Passport
+Mã học viên: FX06889
 Repo này được sử dụng để quản lý và phát triển một dự án có tên là FUNiX Passport, một Extension cho trình duyệt, cho phép người dùng xem phụ đề trên các video từ nhiều nguồn khác nhau, bao gồm Udemy.
 
 Có các branch sau:
