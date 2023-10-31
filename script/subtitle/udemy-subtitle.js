@@ -115,13 +115,22 @@ async function initData() {
 	return resAPI.code;
 }
 
-$(document).ready(function () {
-<<<<<<< HEAD
-=======
-	//console.log(1 + '-udemy-subtitle');
->>>>>>> backend
 
+$(document).ready(function () {
+ //console.log(1 + '-udemy-subtitle');
+  enable = false;
+  udemySubtitleObserver = new subtitleObserver(direct_sub_node); //Observe the paragraph
+  initComponents(); // Check if user change lesson.
+  startObserver(); // startObserver
+
+  // load - check initData start
+  initData().then((data) => {
+    pageLoad(data);
+  });
 });
+
+
+
 
 function initComponents() {
 	//console.log(2 + '-udemy-subtitle');
