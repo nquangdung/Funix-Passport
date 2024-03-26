@@ -1,50 +1,55 @@
 let arraySubType = [];
 
 class SubtitleBase {
-	constructor() {}
+    constructor() {
 
-	async initData() {
-		await RequestData.requestSubtitleData(
-			this.cid,
-			this.getId(),
-			this.parseSubtitle
-		).then((res) => {
-			this.data = res;
-		});
+    }
 
-		if (!this.data) return;
+    async initData() {
+        await RequestData.requestSubtitleData(this.cid, this.getId(), this.parseSubtitle)
+            .then(res => {
+                this.data = res
+            });
 
-		if (this.data.vi) arraySubType.push('vi');
+        if (!this.data)
+            return;
 
-		if (this.data.en) arraySubType.push('en');
+        if (this.data.vi)
+            arraySubType.push('vi');
 
-		getSettingData().then((res) => {
-			let subtitleMode = res.modeSubtitle;
-			if (subtitleMode === '0') {
-				Notifycation.confirmSubtitle(arraySubType).then((mode) => {
-					if (mode !== 0) {
-						this.startSubtitle(mode);
-					}
-				});
-			}
-		});
-	}
+        if (this.data.en)
+            arraySubType.push('en');
 
-	run() {
-		this.initData();
-	}
 
-	getId() {}
+        getSettingData().then(res => {
+            let subtitleMode = res.modeSubtitle;
+            if (subtitleMode === "0") {
+                Notifycation.confirmSubtitle(arraySubType).then(mode => {
+                    if (mode !== 0) {
+                        this.startSubtitle(mode);
+                    }
+                });
+            }
+        });
+    }
 
-	startSubtitle(mode) {
-		let selector = this.selector || '#funixSubtitle';
-		this.subtitleObserver = new subtitleObserver(selector);
-		this.subtitleObserver.initData(this.data.vi, this.data.en);
-		this.subtitleObserver.mode = mode;
+    run() {
+        this.initData();
+    }
 
-		this.initElement(parseInt(mode));
-		this.subtitleObserver.startObserver($('video').get(0));
-	}
+    getId() {}
 
-	initElement(mode) {}
+    startSubtitle(mode) {
+        let selector = this.selector || '#funixSubtitle';
+        this.subtitleObserver = new subtitleObserver(selector);
+        this.subtitleObserver.initData(this.data.vi, this.data.en);
+        this.subtitleObserver.mode = mode;
+
+        this.initElement(parseInt(mode));
+        this.subtitleObserver.startObserver($("video").get(0));
+    }
+
+    initElement(mode) {
+
+    }
 }
