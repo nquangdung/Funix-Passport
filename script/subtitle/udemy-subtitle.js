@@ -137,17 +137,7 @@ function initComponents() {
 function pageLoad(code) {
 	startObserver();
 	if (code === 200) {
-		getSettingData().then((res) => {
-			let subtitleMode = res.modeSubtitle;
-			if (subtitleMode === '0') {
-				subTileAudio.removeTagAudio();
-				Notifycation.confirmSubtitle(arraySubType).then((mode) => {
-					if (mode !== 0) {
-						start(mode, res.float);
-					}
-				});
-			}
-		});
+		start(1, false);
 	}
 }
 
