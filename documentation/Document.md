@@ -1,888 +1,300 @@
-**FUNiX**
+# FUNiX
 
-![](vertopal_a4b7f6ead3a04d33ac649a539e6234f8/media/image1.png){width="2.3333333333333335in"
-height="2.3333333333333335in"}
+![](./vertopal_b0b32cbb01e440bf896de25203e9d5bd/media/image1.png)
 
-**SWE102x_03-A:**
+## SWE102x_03-A: Nhập môn kỹ thuật phần mềm
 
-**Nhập môn kỹthuật phần mềm**
+### Assignment 1: Thiết kế FUNiX Passport
 
-**Assignment 1: Thiết kếFUNiX Passport**
+#### Nguyễn Đặng Kim Ngân - FX10631
 
-Nguyễn Đặng Kim Ngân - FX10631
+---
 
-**FUNiX**
+### Revision History
 
-**Revision History**
+| Date       | Version | Description | Author   |
+|------------|---------|-------------|----------|
+| <04/13/07> | <1.0>   | SRS 1.0     | Group-1  |
+| <04/15/07> | <2.0>   | SRS 2.0     | Group-1  |
+| <04/15/07> | <3.0>   | SRS 3.0     | Group-1  |
 
-  -----------------------------------------------------------------------
-  **Date**          **Version**       **Description**   **Author**
-  ----------------- ----------------- ----------------- -----------------
-  \<04/13/07\>      \<1.0\>           SRS 1.0           Group-1
+---
 
-  \<04/15/07\>      \<2.0\>           SRS 2.0           Group-1
+### Bảng thuật ngữ
 
-  \<04/15/07\>      \<3.0\>           SRS 3.0           Group-1
-  -----------------------------------------------------------------------
+| Thuật ngữ  | Định nghĩa                                                                 |
+|------------|----------------------------------------------------------------------------|
+| Cấu hình   | Nó có nghĩa là một sản phẩm có sẵn / Được chọn từ một danh mục có thể được tùy chỉnh. |
+| FAQ        | Frequently Asked Questions                                                 |
+| CRM        | Customer Relationship Management                                           |
+| RAID 5     | Redundant Array of Inexpensive Disk/Drives                                 |
+| CSDL       | Cơ sở dữ liệu                                                              |
 
-**Bảng thuật ngữ**
 
-> Cung cấp tổng quan vềbất kỳđịnh nghĩa nào mà người đọc nên hiểu trước
-> khi đọc tiếp.
+### Table of Contents
 
-+-----------------------------------+-----------------------------------+
-| > Cấu hình                        | > Nó có nghĩa là một sản phẩm có  |
-|                                   | > sẵn / Được chọn từmột danh mục  |
-|                                   | > có thểđược tùy chỉnh.           |
-+===================================+===================================+
-| > FAQ                             | > Frequently Asked Questions      |
-+-----------------------------------+-----------------------------------+
-| > CRM                             | > Customer Relationship           |
-|                                   | > Management                      |
-+-----------------------------------+-----------------------------------+
-| > RAID 5                          | > Redundant Array of Inexpensive  |
-|                                   | > Disk/Drives                     |
-+-----------------------------------+-----------------------------------+
-| > CSDL                            | > Cơ sởdữliệu                     |
-+-----------------------------------+-----------------------------------+
+1. [Giới thiệu tổng quan về dự án](#giới-thiệu-tổng-quan-về-dự-án)
+   - [1.1 Tóm tắt dự án FUNiX Passport](#11-tóm-tắt-dự-án-funix-passport)
+   - [1.2 Phạm vi của dự án](#12-phạm-vi-của-dự-án)
+2. [Yêu cầu và đặc tả dự án](#yêu-cầu-và-đặc-tả-dự-án)
+   - [2.1 Định nghĩa yêu cầu dự án](#21-định-nghĩa-yêu-cầu-dự-án)
+   - [2.2 Yêu cầu chức năng](#22-yêu-cầu-chức-năng)
+   - [2.3 Yêu cầu phi chức năng](#23-yêu-cầu-phi-chức-năng)
+     - [2.2.1 Tính bảo mật](#221-tính-bảo-mật)
+     - [2.2.2 Tính sẵn sàng và khả năng đáp ứng](#222-tính-sẵn-sàng-và-khả-năng-đáp-ứng)
+     - [2.2.3 Hiệu suất](#223-hiệu-suất)
+   - [2.4 Đặc tả phần mềm](#24-đặc-tả-phần-mềm)
+3. [Kiến trúc và thiết kế phần mềm](#kiến-trúc-và-thiết-kế-phần-mềm)
+   - [3.1 Kiến trúc phần mềm](#31-kiến-trúc-phần-mềm)
+   - [3.2 Usecase](#32-usecase)
+     - [3.2.1 Usecase của User](#321-usecase-của-user)
+     - [3.2.2 Usecase của Translator](#322-usecase-của-translator)
+     - [3.2.3 Usecase của Admin](#323-usecase-của-admin)
+     - [3.2.4 Usecase của Student](#324-usecase-của-student)
+   - [3.3 Sơ đồ use case tổng quát của hệ thống](#33-sơ-đồ-use-case-tổng-quát-của-hệ-thống)
+   - [3.4 Class Diagram](#34-class-diagram)
+---
 
-**Table of Contents**
+### 1. Giới thiệu tổng quan về dự án
 
-+-----------------------------------+-----------------------------------+
-| > Nguyễn Đặng Kim Ngân - FX10631\ | > 1\                              |
-| > Table of Contents\              | > 3\                              |
-| > 1. Giới thiệu tổng quan vềdựán\ | > 5\                              |
-| > 1.1 Tóm tắt dựán FUNiX          | > 5\                              |
-| > Passport:\                      | > 6\                              |
-| > 1.2 Phạm vi của dựán\           | > 7\                              |
-| > 2. Yêu cầu và đặc tảdựán\       | > 7\                              |
-| > 2.1 ĐỊNH NGHĨA YÊU CẦU DỰÁN:\   | > 7\                              |
-| > 2.2 Yêu cầu chức năng\          | > 7\                              |
-| > 2.3 Yêu cầu phi chức năng\      | > 8\                              |
-| > ■2.2.1 Tính bảo mật\            | > 8\                              |
-| > ■2.2.2 Tính sẵn sàng và khảnăng | > 8\                              |
-| > đáp ứng ■2.2.3 Hiệu suất\       | > 9\                              |
-| > 2.4 Đặc tảphần mềm              | > 9\                              |
-| >                                 | > 9\                              |
-| > ●\                              | > 9\                              |
-| > 3. Kiến trúc và thiết kếphần    | > 11\                             |
-| > mềm\                            | > 11\                             |
-| > 3.1 Kiến trúc phần mềm\         | > 13\                             |
-| > 3.2 Usecase:\                   | > 17\                             |
-| > 3.2.1 Usecase của User\         | > 18\                             |
-| > 3.2.2 Usecase của Translator\   | > 20\                             |
-| > 3.2.3 Usecase của Admin\        | > 21\                             |
-| > 3.2.4 Usecase của Student\      | > 22\                             |
-| > 3.3 Sơ đồuse case tổng quát của | > 23                              |
-| > hệthống 3.4 Class Diagram\      |                                   |
-| > 3.5 Sequence Diagram\           |                                   |
-| > 3.6 Activity Diagram            |                                   |
-+===================================+===================================+
-+-----------------------------------+-----------------------------------+
+#### 1.1 Tóm tắt dự án FUNiX Passport
 
-Tài liệu đặc tả
+Tóm tắt lại các thông tin cơ bản về dự án:
 
-+-----------------------+-----------------------+-----------------------+
-| 1.1                   | **1.**                | > **[Giới thiệu tổng  |
-|                       |                       | > quan                |
-|                       |                       | >                     |
-|                       |                       | vềdựán]{.underline}** |
-+=======================+=======================+=======================+
-|                       | > Tóm tắt dựán FUNiX  |                       |
-|                       | > Passport:           |                       |
-+-----------------------+-----------------------+-----------------------+
+- **Hệ thống sẽ xây dựng là gì?**
 
-> Tóm tắt lại các thông tin cơ bản vềdựán:
->
-> ● Hệthống sẽxây dựng là gì?
->
-> Chúng ta sẽxây dựng hệthống tên FUNiX Passport đểhỗtrợdịch tài liệu
-> chữhoặc video từtiếng Anh sang tiếng Việt của FUNiX dành riêng riêng
-> học viên theo học.
->
-> ● Mục đích xây dựng hệthống là gì? Hệthống giúp giải quyết cho bài
-> toán gì?
->
-> Hệthống được xây dựng với các mục đích sau:
->
-> \- Hỗtrợhọc viên tiếp cận học liệu dễhiểu hơn, chuẩn xác hơn.
->
-> \- Vì đa sốcác trang web đều sửdụng ứng dụng dịch ngôn ngữtheo dạng
-> bềmặt, việc dịch tay và chỉnh sửa đểphù hợp với chủđềcông nghệthông
-> tin sẽgiúp tính chính xác của học liệu đối với chuyên ngành.
->
-> ● Các mục tiêu đểxây dựng dựán là gì?
->
-> Đểxây dựng dựán, ta cần hoàn thành những mục tiêu:
->
-> \- Xây dựng mô hình dựán gồm 2 phần là phần Backend và Extension:\
-> - Backend: là nơi thực hiện các thao tác với CSDL, với nhiệm vụlà quản
-> lý vềcác file dịch thuật. Ngoài ra, Backend phải được thiết kếđểcác
-> dịch thuật viên đăng tải phụ đềtương ứng với học liệu đó. Backend cần
-> giúp các dịch thuật viên và quản trịviên quản lý file dịch thuật, đồng
-> thời, cần lưu trữđầy đủthông tin môn - url học liệu - file dịch thuật.
->
-> \- Extension: Là một tiện ích mởrộng, giao tiếp với Backend, thực hiện
-> nạp những thông tin cần thiết đểhiển thịbản dịch tương ứng cho phía
-> học viên sửdụng.
+  Chúng ta sẽ xây dựng hệ thống tên FUNiX Passport để hỗ trợ dịch tài liệu chữ hoặc video từ tiếng Anh sang tiếng Việt của FUNiX dành riêng riêng học viên theo học.
 
-+-----------------------------------+-----------------------------------+
-| \-                                | > Xây dựng giao diện sửdụng thân  |
-|                                   | > thiện, dễhiểu với người dùng.   |
-|                                   | > Cung cấp các bản dịch chính     |
-+===================================+===================================+
-+-----------------------------------+-----------------------------------+
+- **Mục đích xây dựng hệ thống là gì? Hệ thống giúp giải quyết cho bài toán gì?**
 
-> xác trong thời gian nhanh chóng.\
-> 1.2 Phạm vi của dựán
->
-> Giải thích phạm vi của dựán: định nghĩa: là một phần kếhoạch dựán liên
-> quan. Chúng ta sẽxác định các mục tiêu dựán cụthể, các công việc,
-> nhiệm vụ, chi phí và thời hạn. Tài liệu phạm vi của dựán tuyên bốphạm
-> vi hoặc các điều khoản tham chiếu, giải thích các ranh giới của dựán
-> thiết lập trách nhiệm cho từng thành viên trong nhóm và các quy trình
-> xác minh cũng như phê duyệt công việc đã hoàn thành.
+  Hệ thống được xây dựng với các mục đích sau:
+  
+  - Hỗ trợ học viên tiếp cận học liệu dễ hiểu hơn, chuẩn xác hơn.
+  - Vì đa số các trang web đều sử dụng ứng dụng dịch ngôn ngữ theo dạng bề mặt, việc dịch tay và chỉnh sửa để phù hợp với chủ đề công nghệ thông tin sẽ giúp tính chính xác của học liệu đối với chuyên ngành.
 
-+-----------------------------------+-----------------------------------+
-| ●                                 | > Phạm vi vềdịch vụ               |
-|                                   | >                                 |
-| > \-\                             | > Cung cấp một nền tảng lưu       |
-| > -                               | > trữMetadata các file phụđềcủa   |
-|                                   | > các học liệu tiếng Anh. Thao    |
-| ●                                 | > tác, tìm kiếm, chỉnh sửa, quản  |
-|                                   | > lí thông tin các file dịch      |
-| > \-\                             | > phụđề.                          |
-| > -\                              | >                                 |
-| > -                               | > Phạm vi vềkhách hàng:           |
-|                                   | >                                 |
-| ●                                 | > Học viên FUNiX.                 |
-|                                   | >                                 |
-| > \-\                             | > Các dịch thuật viên\            |
-| > -                               | > Các quản trịviên.               |
-|                                   | >                                 |
-|                                   | > Phạm vi vềnền tảng/hệthống      |
-|                                   | >                                 |
-|                                   | > Các trang công nghệthông tin    |
-|                                   | > trên internet, những video, học |
-|                                   | > liệu MOOC. Hoạt động như một    |
-|                                   | > tiện ích mởrộng trên các phần   |
-|                                   | > mềm internet: Bing, Chrome, ... |
-+===================================+===================================+
-+-----------------------------------+-----------------------------------+
+- **Các mục tiêu để xây dựng dự án là gì?**
 
-+-------------+-------------+-------------+-------------+-------------+
-| 2.1         | > \-        | **2.**      |             | > **Yêu cầu |
-|             |             |             |             | > và đặc    |
-|             |             |             |             | > tảdựán**  |
-+=============+=============+=============+=============+=============+
-|             |             | > ĐỊNH      |             |             |
-|             |             | > NGHĨA YÊU |             |             |
-|             |             | > CẦU DỰÁN: |             |             |
-+-------------+-------------+-------------+-------------+-------------+
-|             |             | > Là những  |             |             |
-|             |             | > vấn đềcần |             |             |
-|             |             | > xửlý      |             |             |
-|             |             | > trong     |             |             |
-|             |             | > bài.      |             |             |
-|             |             | > Chỉnói    |             |             |
-|             |             | > vềvấn đề, |             |             |
-|             |             | > không     |             |             |
-|             |             | > đềcập tới |             |             |
-|             |             | > tới giải  |             |             |
-|             |             | > pháp.     |             |             |
-+-------------+-------------+-------------+-------------+-------------+
-|             | > \-        | > Những vai |             |             |
-|             |             | > trò của   |             |             |
-|             |             | > đặc tảyêu |             |             |
-|             |             | > cầu dựán: |             |             |
-+-------------+-------------+-------------+-------------+-------------+
-|             |             | \-          | > Giúp      |             |
-|             |             |             | > người làm |             |
-|             |             |             | > hình dung |             |
-|             |             |             | > rõ ràng   |             |
-|             |             |             | > được mục  |             |
-|             |             |             | > đích      |             |
-|             |             |             | > dựán,     |             |
-|             |             |             | > từđó xây  |             |
-|             |             |             | > dựng      |             |
-|             |             |             | > hệthống   |             |
-+-------------+-------------+-------------+-------------+-------------+
+  Để xây dựng dự án, ta cần hoàn thành những mục tiêu:
+  
+  - Xây dựng mô hình dự án gồm 2 phần là phần Backend và Extension:
+    - **Backend**: là nơi thực hiện các thao tác với CSDL, với nhiệm vụ là quản lý về các file dịch thuật. Ngoài ra, Backend phải được thiết kế để các dịch thuật viên đăng tải phụ đề tương ứng với học liệu đó. Backend cần giúp các dịch thuật viên và quản trị viên quản lý file dịch thuật, đồng thời, cần lưu trữ đầy đủ thông tin môn - url học liệu - file dịch thuật.
+    - **Extension**: Là một tiện ích mở rộng, giao tiếp với Backend, thực hiện nạp những thông tin cần thiết để hiển thị bản dịch tương ứng cho phía học viên sử dụng.
+  - Xây dựng giao diện sử dụng thân thiện, dễ hiểu với người dùng. Cung cấp các bản dịch chính xác trong thời gian nhanh chóng.
 
-> chuẩn xác, đầy đủcác chức năng.
->
-> \- Tránh gặp phải trường hợp hiểu sai ý nhau.
->
-> \- Giúp cho việc bảo trì và nâng cao các chức năng trong hệthống 1
-> cách dễdàng và nhanh chóng .
->
-> \- Giúp các tester hiểu được hệthống rõ ràng -\> xây dựng những kịch
-> bản xác thực, chi tiết, thực tếhơn.
->
-> 2.2 Yêu cầu chức năng
->
-> Dựa vào các yêu cầu ởphần \"Yêu cầu dựán\", bạn sẽlọc xem khi xây dựng
-> thì hệthống sẽgồm có những chức năng nào, những chức năng đó sẽhoạt
-> động như thếnào và đưa vào tài liệu theo Template đã có.
->
-> \- Hỗtrợđăng tải và lưu trữcác file dịch thuật + thông tin của file
-> (phụthuộc vào dạng bài gốc là video MOOC hay bài viết) như link bài
-> gốc, tên người dịch, ngày đăng tải, tên bản dịch, v.v
+#### 1.2 Phạm vi của dự án
 
-+-----------------------------------+-----------------------------------+
-| > \-\                             | > Cho phép quản trịviên quản lý   |
-| > -\                              | > file dịch thuật, chỉnh sửa,     |
-| > -\                              | > xóa, thay đổi thông tin.        |
-| > 2.3                             | >                                 |
-|                                   | > Cho phép quản trịviên quản lý   |
-|                                   | > danh sách người dùng: thêm      |
-|                                   | > quyền, xóa quyền, xóa tài       |
-|                                   | > khoản.                          |
-|                                   | >                                 |
-|                                   | > Hỗtrợngười dùng cung cấp file   |
-|                                   | > dịch tương ứng khi họtruy cập   |
-|                                   | > vào học liệu nước ngoài.        |
-|                                   | >                                 |
-|                                   | > Yêu cầu phi chức năng           |
-+===================================+===================================+
-+-----------------------------------+-----------------------------------+
+Giải thích phạm vi của dự án: định nghĩa: là một phần kế hoạch dự án liên quan. Chúng ta sẽ xác định các mục tiêu dự án cụ thể, các công việc, nhiệm vụ, chi phí và thời hạn. Tài liệu phạm vi của dự án tuyên bố phạm vi hoặc các điều khoản tham chiếu, giải thích các ranh giới của dự án thiết lập trách nhiệm cho từng thành viên trong nhóm và các quy trình xác minh cũng như phê duyệt công việc đã hoàn thành.
 
-> Ởphần \"Yêu cầu dựán\" đã đưa ra cho bạn rất nhiều yêu cầu cho
-> hệthống. Bạn sẽcần lọc rađâu là yêu cầu dạng phi chức năng đểviết vào
-> tài liệu (theo như mẫu đã có ởTemplate). Ngoài ra, bạn có thểbổsung
-> thêm một sốyêu cầu phi chức năng mà bạn nghĩ sẽcần thiết cho dựán này.
->
-> *■*2.2.1 Tính bảo mật
->
-> Xác định các yêu cầu liên quan đến vấn đềbảo mật hoặc quyền riêng tư
-> dẫn đến hạn chếquyền truy cập hoặc sửdụng sản phẩm. Có thểlà bảo mật
-> vật lý, dữliệu hoặc phần mềm. Các yêu cầu bảo mật thường bắt nguồn
-> từcác quy tắc kinh doanh, vì vậy hãy xác định mọi chính sách hoặc quy
-> định vềbảo mật hoặc quyền riêng tư mà sản phẩm phải tuân theo.
+- **Phạm vi về dịch vụ**
+  - Cung cấp một nền tảng lưu trữ Metadata các file phụ đề của các học liệu tiếng Anh.
+  - Thao tác, tìm kiếm, chỉnh sửa, quản lí thông tin các file dịch phụ đề.
+- **Phạm vi về khách hàng:**
+  - Học viên FUNiX.
+  - Các dịch thuật viên.
+  - Các quản trị viên.
+- **Phạm vi về nền tảng/hệ thống:**
+  - Các trang công nghệ thông tin trên internet, những video, học liệu MOOC.
+  - Hoạt động như một tiện ích mở rộng trên các phần mềm internet: Bing, Chrome, …
 
-+-----------------------------------+-----------------------------------+
-| > \-\                             | > Yêu cầu tính bảo mật cao.       |
-| > -\                              | >                                 |
-| > -                               | > Không rò rỉcác file dịch thuật  |
-|                                   | > ra ngoài.                       |
-|                                   | >                                 |
-|                                   | > Cần lớp bảo mật trước khi được  |
-|                                   | > phép chỉnh sửa hay thêm bớt     |
-|                                   | > dữliệu trong database.          |
-+===================================+===================================+
-+-----------------------------------+-----------------------------------+
+---
 
-> *■*2.2.2 Tính sẵn sàng và khảnăng đáp ứng
->
-> Nêu vềsựsẵn sàng của hệthống như khảnăng làm việc 24/7, luôn đáp ứng
-> yêu cầu người đọc và tác giảcó thểxem và cập nhật bài với các thời
-> gian khác nhau
->
-> \- Đáp ứng bản dịch đầy đủ, chính xác trong thời gian ngắn.
->
-> \- Khảnăng làm việc 24/7. Luôn luôn sẵn sàng cho user xem bản dịch và
-> cho translator, admin làm việc với bản dịch.
->
-> \- Extension được xây dựng đểsửdụng chủyếu trên trình duyệt Chrome
-> *■*2.2.3 Hiệu suất
->
-> Nêu các yêu cầu hiệu suất cụthểcho các hoạt động hệthống khác nhau.
-> Nếu các yêu cầu chức năng hoặc tính năng khác nhau có yêu cầu vềhiệu
-> suất khác nhau, nên chỉđịnh các mục tiêu hiệu suất đó ngay cạnh các
-> yêu cầu chức năng tương ứng chứkhông gộp lại trong phần này.
->
-> \- Có tốc độổn định, thời gian đểhiển thịbản dịch tính từkhi học viên
-> vào website không được quá 1s.
->
-> \- Thời gian đểsubmit và thực hiện các thao tác của Translator cần
-> phải có tốc độxửlí nhanh. Trung bình mỗi thao tác không quá 0.5s.
->
-> 2.4 Đặc tảphần mềm
->
-> Sau khi đã xác định được hết các yêu cầu cho dựán. Bạn cũng cần xác
-> định đâu là đặc tảphần mềm trong dựán hiện tại và viết vào tài liệu.
->
-> Ngoài ra, bạn có thểbổsung thêm một sốđặc tảkhác mà bạn nghĩ sẽcần
-> thiết cho dựán này.
->
-> \- Vấn đềbảo mật dữliệu: Yêu cầu API Key hoặc Token đểtruy cập dữliệu.
->
-> \- Hệthống được vận hành và được sửdụng chủyếu trên Chrome trong dạng
-> 1 Extension.
+### 2. Yêu cầu và đặc tả dự án
 
-●
+#### 2.1 Định nghĩa yêu cầu dự án
 
-+-----------------------+-----------------------+-----------------------+
-| > 3.1\                | **3.**                | > **Kiến trúc và      |
-| > 3.1.1\              |                       | > thiết kếphần mềm**  |
-| > -\                  |                       |                       |
-| > -                   |                       |                       |
-+=======================+=======================+=======================+
-|                       | > Kiến trúc phần mềm\ |                       |
-|                       | > Định nghĩa kiến     |                       |
-|                       | > trúc phần mềm:\     |                       |
-|                       | > Là cấp bậc cao nhất |                       |
-|                       | > của giai đoạn thiết |                       |
-|                       | > kế\                 |                       |
-|                       | > Từnhững ý tưởng rời |                       |
-|                       | > rạc, kiến trúc phần |                       |
-|                       | > mềm sẽgiúp ta       |                       |
-|                       | > tổchức và sắp xếp   |                       |
-|                       | > logic đểchuẩn bị    |                       |
-+-----------------------+-----------------------+-----------------------+
+- Là những vấn đề cần xử lý trong bài. Chỉ nói về vấn đề, không đề cập tới tới giải pháp.
+- Những vai trò của đặc tả yêu cầu dự án:
+  - Giúp người làm hình dung rõ ràng được mục đích dự án, từ đó xây dựng hệ thống chuẩn xác, đầy đủ các chức năng.
+  - Tránh gặp phải trường hợp hiểu sai ý nhau.
+  - Giúp cho việc bảo trì và nâng cao các chức năng trong hệ thống 1 cách dễ dàng và nhanh chóng.
+  - Giúp các tester hiểu được hệ thống rõ ràng -> xây dựng những kịch bản xác thực, chi tiết, thực tế hơn.
 
-> bắt tay thực hiện.
->
-> \- Một khi đã quyết định kiến trúc thì không thểthay đổi trong bất kì
-> trường hợp nào.- Kiến trúc phần mềm chia nhỏhệthống và ý tưởng lớn hơn
-> thành các hệthống tập trung nhỏ hơn.
->
-> \- Lợi ích của việc xây dựng 1 kiến trúc tốt: Tiết kiệm thời gian hoàn
-> thành sản phẩm, chi phí bảo trì dựán.
->
-> \- Buy & Build: Phân tách dựán ra thành các phần riêng biệt, từđó xem
-> xét đã có bản sản phẩm hoàn chỉnh được rao bán trên thịtrường hay
-> chưa. Nếu có thì ta bỏphí để mua bản có sẵn đó, vừa tiết kiệm được
-> nhân lực cũng như thời gian, tiền bạc xây dựng dựán.
->
-> \- Các mẫu kiến trúc phần mềm thông dụng:\
-> - Pipe and Filter: -
->
-> Dựa vào các nội dung của yêu cầu dựán phía trên, bạn hãy chọn lựa kiến
-> trúc phần mềm phùhợp với dựán này. Sau đó, bạn cần viết ra lý do hợp
-> lý đểbạn chọn kiến trúc này thay vì các kiến trúc khác.
+#### 2.2 Yêu cầu chức năng
 
-+-----------------------+-----------------------+-----------------------+
-| > Mô hình cấu trúc    |                       |                       |
-| > tổng quát           |                       |                       |
-+=======================+=======================+=======================+
-| > Client-Server       | > \- Dựa vào cách     |                       |
-|                       | > hoạt động của phần  |                       |
-|                       | > mềm: người dùng     |                       |
-|                       | > truy cập vào trang  |                       |
-|                       | > web học liệu, sau   |                       |
-|                       | > đó extension lấy ID |                       |
-|                       | > của các thành phần, |                       |
-|                       | > gửi về\             |                       |
-|                       | > backend và chờfile  |                       |
-|                       | > phụđề/document      |                       |
-|                       | > tương ứng.          |                       |
-|                       | >                     |                       |
-|                       | > \- Dựa vào sốlượng: |                       |
-|                       | > 1 backend (server)  |                       |
-|                       | > chịu trách nhiệm và |                       |
-|                       | > xửlý yêu cầu của    |                       |
-|                       | > nhiều máy học viên  |                       |
-|                       | > (client)            |                       |
-+-----------------------+-----------------------+-----------------------+
-| > Mô hình cấu trúc    |                       |                       |
-| > chức năng           |                       |                       |
-+-----------------------+-----------------------+-----------------------+
-| > Tìm kiếm file       | > Pipe-Filter         | > \- Dựa vào cách     |
-|                       |                       | > hoạt động: Sau khi  |
-|                       |                       | > nhập 1 loạt ký      |
-|                       |                       | > tựchứa thông tin    |
-|                       |                       | > của file cần tìm    |
-|                       |                       | > kiếm, hệthống       |
-|                       |                       | > sẽtiến hành phân    |
-|                       |                       | > tách thông tin theo |
-|                       |                       | > từng lớp, từđó chọn |
-|                       |                       | > ra những kết quảcó  |
-|                       |                       | > độtrùng khớp nhiều  |
-|                       |                       | > nhất tới thấp nhất. |
-+-----------------------+-----------------------+-----------------------+
+Dựa vào các yêu cầu ở phần "Yêu cầu dự án", bạn sẽ lọc xem khi xây dựng thì hệ thống sẽ gồm có những chức năng nào, những chức năng đó sẽ hoạt động như thế nào và đưa vào tài liệu theo Template đã có.
 
-+-----------------------------------+-----------------------------------+
-| > 3.2\                            | > Usecase:\                       |
-| > 3.2.1                           | > Usecase của User                |
-+===================================+===================================+
-+-----------------------------------+-----------------------------------+
+- Hỗ trợ đăng tải và lưu trữ các file dịch thuật + thông tin của file (phụ thuộc vào dạng bài gốc là videoMOOC hay bài viết) như link bài gốc, tên người dịch, ngày đăng tải, tên bản dịch, v.v
+- Cho phép quản trị viên quản lý file dịch thuật, chỉnh sửa, xóa, thay đổi thông tin.
+- Cho phép quản trị viên quản lý danh sách người dùng: thêm quyền, xóa quyền, xóa tài khoản.
+- Hỗ trợ người dùng cung cấp file dịch tương ứng khi họ truy cập vào học liệu nước ngoài.
 
-> ![](vertopal_a4b7f6ead3a04d33ac649a539e6234f8/media/image2.png){width="5.979166666666667in"
-> height="5.406944444444444in"}
+### 2.3 Yêu cầu phi chức năng (tiếp theo)
 
-+-----------------------------------+-----------------------------------+
-| **Use Case Name**                 | > Đăng nhập                       |
-+===================================+===================================+
-| > **Mô tả**                       | > User có thểđăng nhập tài khoản  |
-|                                   | > vào hệthống và sửdụng các chức  |
-|                                   | > năng trong đó.                  |
-+-----------------------------------+-----------------------------------+
-| > **Điều kiện**                   | > User chưa đăng nhập vào hệthống |
-+-----------------------------------+-----------------------------------+
-| > **Luồng chính**                 | > 1\. User truy cập vào trang web |
-|                                   | > quản lý. Nhấn vào mục "Login\"  |
-|                                   | > 2. Hệthống hiển thịForm Login.  |
-|                                   | >                                 |
-|                                   | > 3\. User nhập vào các thông tin |
-|                                   | > đăng nhập.                      |
-|                                   | >                                 |
-|                                   | > 4\. Nếu thông tin đăng nhập     |
-|                                   | > đúng, cập nhật thông tin vào    |
-|                                   | > hệthống.                        |
-+-----------------------------------+-----------------------------------+
+##### 2.2.1 Tính bảo mật
 
-+-----------------------------------+-----------------------------------+
-| > **Luồng phụ**                   | > Ởbước 4, nếu thông tin đăng     |
-|                                   | > nhập sai sẽhiển thịthông báo    |
-|                                   | > cho người dùng.                 |
-+-----------------------------------+-----------------------------------+
+Xác định các yêu cầu liên quan đến vấn đề bảo mật hoặc quyền riêng tư dẫn đến hạn chế quyền truy cập hoặc sử dụng sản phẩm. Có thể là bảo mật vật lý, dữ liệu hoặc phần mềm. Các yêu cầu bảo mật thường bắt nguồn từ các quy định hoặc tiêu chuẩn liên quan đến ngành.
 
-+-----------------------------------+-----------------------------------+
-| > **Use Case Name**               | > Đăng xuất                       |
-+===================================+===================================+
-| > **Mô tả**                       | > User sau khi sửdụng hệthống     |
-|                                   | > xong có thểđăng xuất tài khoản  |
-|                                   | > đểtránh bịkẻlợi dụng.           |
-+-----------------------------------+-----------------------------------+
-| > **Điều kiện**                   | > User đã đăng nhập vào hệthống   |
-+-----------------------------------+-----------------------------------+
-| > **Luồng chính**                 | > 1\. User tìm kiếm mục "Log out" |
-|                                   | > trên hệthống.                   |
-|                                   | >                                 |
-|                                   | > 2\. User nhấp vào Logout và     |
-|                                   | > confirm đăng xuất.              |
-+-----------------------------------+-----------------------------------+
-| > **Luồng phụ**                   | > Ởbước 2, hệthống sẽhiển         |
-|                                   | > thịpop-up form đểxác định đăng  |
-|                                   | > xuất.                           |
-+-----------------------------------+-----------------------------------+
+##### 2.2.2 Tính sẵn sàng và khả năng đáp ứng
 
-> 3.2.2 Usecase của Translator
->
-> ![](vertopal_a4b7f6ead3a04d33ac649a539e6234f8/media/image3.png){width="6.729166666666667in"
-> height="5.781944444444444in"}
+- Hệ thống phải luôn sẵn sàng để sử dụng bất cứ lúc nào, đặc biệt vào thời điểm học viên cần học.
+- Phải đảm bảo khả năng đáp ứng tốt trong mọi tình huống, dù có nhiều người dùng cùng lúc.
 
-+-----------------------------------+-----------------------------------+
-| > **Use Case Name**               | > Upload file phụđề               |
-+===================================+===================================+
-| > **Mô tả**                       | > Sau khi thực hiện dịch xong tài |
-|                                   | > liệu (video MOOC hoặc trang     |
-|                                   | > web), Translator tiến hành đăng |
-|                                   | > tải file dịch thuật lên         |
-|                                   | > hệthống.                        |
-+-----------------------------------+-----------------------------------+
-| > **Điều kiện**                   | > \- Translator đã đăng nhập tài  |
-|                                   | > khoản được cấp quyền.           |
-|                                   | >                                 |
-|                                   | > \- Học liệu gốc chưa có file    |
-|                                   | > dịch                            |
-+-----------------------------------+-----------------------------------+
-| > **Luồng chính**                 | > 1\. Translator truy cập vào     |
-|                                   | > trang web quản lý, nhập         |
-|                                   | > password đểtruy cập vào         |
-|                                   | > dashboard lưu file.             |
-|                                   | >                                 |
-|                                   | > 2\. Nhấn vào mục "Đăng tải      |
-|                                   | > file".                          |
-|                                   | >                                 |
-|                                   | > 3\. Translator tải file         |
-|                                   | > phụđề/document lên              |
-+-----------------------------------+-----------------------------------+
+##### 2.2.3 Hiệu suất
 
-+-----------------------------------+-----------------------------------+
-|                                   | > 4\. Translator hoàn thành các   |
-|                                   | > thông tin cần thiết của file.   |
-|                                   | > 5. Translator nhấn "Submit".    |
-|                                   | > Thao tác hoàn thành.            |
-+===================================+===================================+
-| > **Luồng phụ**                   | > Ởbước thứ3, hệthống thực hiện   |
-|                                   | > kiểm tra định dạng, kích        |
-|                                   | > cỡfile.Ởbước thứ5, hệthống kiểm |
-|                                   | > tra các thông tin đã đúng định  |
-|                                   | > dạng, cúpháp.                   |
-+-----------------------------------+-----------------------------------+
+- Hệ thống phải có khả năng xử lý nhanh các thao tác của người dùng, đặc biệt là việc tìm kiếm và tải lên các file dịch thuật.
+- Đảm bảo hệ thống không bị treo hoặc chậm khi có nhiều người dùng truy cập cùng lúc.
 
-+-----------------------------------+-----------------------------------+
-| > **Use Case Name**               | > Tải file phụđề                  |
-+===================================+===================================+
-| > **Mô tả**                       | > Sau khi tìm thấy file cần tải,  |
-|                                   | > translator nhấp nút tải.        |
-+-----------------------------------+-----------------------------------+
-| > **Điều kiện**                   | > \- Translator đã đăng nhập tài  |
-|                                   | > khoản được cấp quyền.           |
-|                                   | >                                 |
-|                                   | > \- File dịch đã tồn tại         |
-+-----------------------------------+-----------------------------------+
-| > **Luồng chính**                 | > 1\. Translator truy cập vào     |
-|                                   | > trang web quản lý, nhập         |
-|                                   | > password đểtruy cập vào         |
-|                                   | > dashboard lưu file.             |
-|                                   | >                                 |
-|                                   | > 2\. Translator mởbảng           |
-|                                   | > dashboard, và chọn file muốn    |
-|                                   | > tải. 3. Nhấp vào nút tải đểtiến |
-|                                   | > hành tải file.                  |
-+-----------------------------------+-----------------------------------+
-| > **Luồng phụ**                   |                                   |
-+-----------------------------------+-----------------------------------+
+#### 2.4 Đặc tả phần mềm
 
-+-----------------------------------+-----------------------------------+
-| > **Use Case Name**               | > Tải xuống file đã dịch          |
-+===================================+===================================+
-| > **Mô tả**                       | > Sau khi thực hiện dịch xong tài |
-|                                   | > liệu (video MOOC hoặc trang     |
-|                                   | > web), Translator tiến hành đăng |
-|                                   | > tải file dịch thuật lên         |
-|                                   | > hệthống.                        |
-+-----------------------------------+-----------------------------------+
-| > **Điều kiện**                   | > \- Translator đã đăng nhập tài  |
-|                                   | > khoản được cấp quyền.           |
-|                                   | >                                 |
-|                                   | > \- Học liệu gốc chưa có file    |
-|                                   | > dịch                            |
-+-----------------------------------+-----------------------------------+
-| > **Luồng chính**                 | > 1\. Translator truy cập vào     |
-|                                   | > trang web quản lý, nhập         |
-|                                   | > password đểtruy cập vào         |
-|                                   | > dashboard lưu file.             |
-|                                   | >                                 |
-|                                   | > 2\. Nhấn vào mục "Đăng tải      |
-|                                   | > file".                          |
-|                                   | >                                 |
-|                                   | > 3\. Translator tải file         |
-|                                   | > phụđề/document lên\             |
-|                                   | > 4. Translator hoàn thành các    |
-|                                   | > thông tin cần thiết của file.   |
-|                                   | > 5. Translator nhấn "Submit".    |
-|                                   | > Thao tác hoàn thành.            |
-+-----------------------------------+-----------------------------------+
-| > **Luồng phụ**                   | > Ởbước thứ3, hệthống thực hiện   |
-|                                   | > kiểm tra định dạng, kích        |
-|                                   | > cỡfile.Ởbước thứ5, hệthống kiểm |
-|                                   | > tra các thông tin đã đúng định  |
-|                                   | > dạng, cúpháp.                   |
-+-----------------------------------+-----------------------------------+
+Cần mô tả chi tiết từng chức năng của phần mềm và cách mà chúng sẽ hoạt động.
 
-+-----------------------------------+-----------------------------------+
-| > **Use Case Name**               | > Xem danh sách các file đã được  |
-|                                   | > upload                          |
-+===================================+===================================+
-| > **Mô tả**                       | > Backend sẽcung cấp 2 Dashboard, |
-|                                   | > 1 bảng hiển thịcác bản dịch     |
-|                                   | > phụđềvà 1 bảng hiển thịbản dịch |
-|                                   | > Document.                       |
-+-----------------------------------+-----------------------------------+
-| > **Điều kiện**                   | > \- Translator đã đăng nhập tài  |
-|                                   | > khoản được cấp quyền.           |
-+-----------------------------------+-----------------------------------+
-| > **Luồng chính**                 | > 1\. Translator truy cập vào     |
-|                                   | > trang web quản lý, nhập         |
-|                                   | > password đểtruy cập vào         |
-|                                   | > dashboard lưu file.             |
-|                                   | >                                 |
-|                                   | > 2\. Translator xem 2 dashboard, |
-|                                   | > 1 bảng lưu trữfile phụđề, 1     |
-|                                   | > bảng lưu trữfile document.      |
-+-----------------------------------+-----------------------------------+
-| > **Luồng phụ**                   |                                   |
-+-----------------------------------+-----------------------------------+
+---
 
-+-----------------------------------+-----------------------------------+
-| > **Use Case Name**               | > Tìm kiếm các bản dịch theo      |
-|                                   | > bộlọc                           |
-+===================================+===================================+
-| > **Mô tả**                       | > Translator có thểtìm kiếm các   |
-|                                   | > bản dịch theo những bộlọc sau:  |
-|                                   | > Tên bản dịch, Url, Người dịch,  |
-|                                   | > Course ID, Video ID.            |
-+-----------------------------------+-----------------------------------+
-| > **Điều kiện**                   | > \- Translator đã đăng nhập tài  |
-|                                   | > khoản được cấp quyền.           |
-+-----------------------------------+-----------------------------------+
-| > **Luồng chính**                 | > 1\. Translator truy cập vào     |
-|                                   | > trang web quản lý, nhập         |
-|                                   | > password đểtruy cập vào         |
-|                                   | > dashboard lưu file.             |
-|                                   | >                                 |
-|                                   | > 2\. Nhấn vào mục Tìm kiếm\      |
-|                                   | > 3. Translator tìm nhập thẳng    |
-|                                   | > vào thanh tìm kiếm hoặc chọn    |
-|                                   | > theo bộlọc có sẵn.              |
-|                                   | >                                 |
-|                                   | > 4\. Translator xem những kết    |
-|                                   | > quảtìm kiếm trảvề               |
-+-----------------------------------+-----------------------------------+
-| > **Luồng phụ**                   | > Máy chủthực hiện tìm kiếm theo  |
-|                                   | > thông tin đã được cung cấp và   |
-|                                   | > trảlại những kết quảtìm kiếm    |
-|                                   | > trùng khớp                      |
-+-----------------------------------+-----------------------------------+
+### 3. Kiến trúc và thiết kế phần mềm
 
-+-----------------------------------+-----------------------------------+
-| > **Use Case Name**               | > Xóa các file dịch thuật         |
-+===================================+===================================+
-| > **Mô tả**                       | > Sau khi tới file cần xóa,       |
-|                                   | > translator thực hiện xóa file.  |
-+-----------------------------------+-----------------------------------+
-| > **Điều kiện**                   | > \- Translator đã đăng nhập tài  |
-|                                   | > khoản được cấp quyền. \`        |
-|                                   | >                                 |
-|                                   | > \- Học liệu gốc đã có file dịch |
-+-----------------------------------+-----------------------------------+
-| > **Luồng chính**                 | > 1\. Translator truy cập vào     |
-|                                   | > trang web quản lý, nhập         |
-|                                   | > password đểtruy cập vào         |
-|                                   | > dashboard lưu file.             |
-|                                   | >                                 |
-|                                   | > 1.5. Translator thực hiện tìm   |
-|                                   | > kiếm file cần xóa.              |
-+-----------------------------------+-----------------------------------+
+3.1.1. Định nghĩa kiến trúc phần mềm:
+- Là cấp bậc cao nhất của giai đoạn thiết kế
+- Từ những ý tưởng rời rạc, kiến trúc phần mềm sẽ giúp ta tổ chức và sắp xếp logic để chuẩn bị
+bắt tay thực hiện.
+- Một khi đã quyết định kiến trúc thì không thể thay đổi trong bất kì trường hợp nào.
+- Kiến trúc phần mềm chia nhỏ hệ thống và ý tưởng lớn hơn thành các hệ thống tập trung nhỏ
+hơn.
+- Lợi ích của việc xây dựng 1 kiến trúc tốt: Tiết kiệm thời gian hoàn thành sản phẩm, chi phí
+bảo trì dự án.
+- Buy & Build: Phân tách dự án ra thành các phần riêng biệt, từ đó xem xét đã có bản
+sản phẩm hoàn chỉnh được rao bán trên thị trường hay chưa. Nếu có thì ta bỏ phí để
+mua bản có sẵn đó, vừa tiết kiệm được nhân lực cũng như thời gian, tiền bạc xây dựng
+dự án.
+- Các mẫu kiến trúc phần mềm thông dụng:
+- Pipe and Filter: -Dựa vào các nội dung của yêu cầu dự án phía trên, bạn hãy chọn lựa kiến trúc phần mềm phù
+hợp với dự án này. Sau đó, bạn cần viết ra lý do hợp lý để bạn chọn kiến trúc này thay vì các kiến
+trúc khác
 
-+-----------------------------------+-----------------------------------+
-|                                   | > 2\. Translator nhấp vào dòng    |
-|                                   | > file cần xóa trong dashboard    |
-|                                   | > hoặc trong mục tìm kiếm.        |
-|                                   | >                                 |
-|                                   | > 3\. Translator nhấn Xác nhận    |
-|                                   | > xóa file.                       |
-+===================================+===================================+
-| > **Luồng phụ**                   | > Ởbước thứ2, hệthống hiện 1      |
-|                                   | > pop-up form xác nhận xóa file.  |
-+-----------------------------------+-----------------------------------+
+Mô tả cấu trúc tổng thể của hệ thống, cách các thành phần phần mềm tương tác với nhau. Bao gồm cả phần Backend và Extension.
 
-+-----------------------------------+-----------------------------------+
-| > **Use Case Name**               | > Chỉnh sửa thông tin file        |
-+===================================+===================================+
-| > **Mô tả**                       | > Translator mởfile cần chỉnh sửa |
-|                                   | > và tiến hành cập nhật thông     |
-|                                   | > tin/file dịch thuật theo ý      |
-|                                   | > muốn.                           |
-+-----------------------------------+-----------------------------------+
-| > **Điều kiện**                   | > \- Translator đã đăng nhập tài  |
-|                                   | > khoản được cấp quyền.           |
-|                                   | >                                 |
-|                                   | > \- File học liệu đã tồn tại, đã |
-|                                   | > có file phụđềđính kèm.          |
-+-----------------------------------+-----------------------------------+
-| > **Luồng chính**                 | > 1\. Translator truy cập vào     |
-|                                   | > trang web quản lý, nhập         |
-|                                   | > password đểtruy cập vào         |
-|                                   | > dashboard lưu file.             |
-|                                   | >                                 |
-|                                   | > 2\. Translator nhấn vào mục     |
-|                                   | > đểxem các bảng file hoặc thực   |
-|                                   | > hiện tìm kiếm file mong muốn.   |
-|                                   | >                                 |
-|                                   | > 3\. Translator nhấp vào ô Edit  |
-|                                   | > và tiến hành cập nhật thông tin |
-|                                   | > file.                           |
-|                                   | >                                 |
-|                                   | > 4\. Sau khi hoàn thành,         |
-|                                   | > translator thực hiện, xác nhận  |
-|                                   | > cập nhật thông tin.             |
-|                                   | >                                 |
-|                                   | > 4.5. Translator nhập lại những  |
-|                                   | > thông tin cập nhật sai định     |
-|                                   | > dạng, cúpháp. (nếu có)\         |
-|                                   | > 5. Translator kiểm tra lại      |
-|                                   | > thông tin sau khi đã cập nhật.  |
-+-----------------------------------+-----------------------------------+
-| > **Luồng phụ**                   | > Ởbước thứ2, hệthống thực hiện   |
-|                                   | > kiểm tra định dạng, kích        |
-|                                   | > cỡfile.Ởbước thứ4, hệthống kiểm |
-|                                   | > tra định dạng, cú pháp và gửi   |
-|                                   | > cảnh báo vềform chỉnh sửa.      |
-|                                   | >                                 |
-|                                   | > Ởbước 5, hệthống thực hiện cập  |
-|                                   | > nhật thông tin và trảvềthông    |
-|                                   | > tinđã cập nhật cho người dùng.  |
-+-----------------------------------+-----------------------------------+
+#### 3.2 Usecase
 
-> 3.2.3 Usecase của Admin
->
-> ![](vertopal_a4b7f6ead3a04d33ac649a539e6234f8/media/image4.png){width="6.729166666666667in"
-> height="3.2597222222222224in"}
+Các Usecase mô tả cách mà người dùng tương tác với hệ thống để đạt được mục tiêu cụ thể.
 
-+-----------------------------------+-----------------------------------+
-| > **Use Case Name**               | > Chỉnh sửa quyền của người dùng  |
-+===================================+===================================+
-| > **Mô tả**                       | > Admin vào Dashboard lưu trữdanh |
-|                                   | > sách người dùng và thực hiện    |
-|                                   | > chỉnh sửa quyền. Có thểthêm     |
-|                                   | > hoặc xóa quyền.                 |
-+-----------------------------------+-----------------------------------+
-| > **Điều kiện**                   | > \- Admin đã được cấp quyền      |
-|                                   | > chỉnh sửa.                      |
-|                                   | >                                 |
-|                                   | > \- Những người dùng bịquản lý   |
-|                                   | > là translator và user.          |
-+-----------------------------------+-----------------------------------+
-| > **Luồng chính**                 | > 1\. Admin truy cập vào trang    |
-|                                   | > web quản lý, nhập password      |
-|                                   | > đểtruy cập vào dashboard lưu    |
-|                                   | > thông tin người dùng.           |
-|                                   | >                                 |
-|                                   | > 2\. Admin chọn Translator đểxóa |
-|                                   | > quyền xuống User. HOẶC, chọn    |
-|                                   | > User đểthêm quyền Translator.   |
-|                                   | >                                 |
-|                                   | > 3\. Admin xác nhận và quay      |
-|                                   | > trởlại màn hình chính.          |
-+-----------------------------------+-----------------------------------+
-| > **Luồng phụ**                   | > Ởbước 1, dashboard hiện danh    |
-|                                   | > sách tất cảngười dùng nhưng     |
-|                                   | > chỉhiện thịnút cập nhật ởcác    |
-|                                   | > người dùng có vai trò là        |
-|                                   | > Translator hoặc User.           |
-|                                   | >                                 |
-|                                   | > Ởbước 3, hệthống thực hiện cập  |
-|                                   | > nhật thông tin và trảvềthông    |
-|                                   | > tinđã cập nhật cho người dùng.  |
-+-----------------------------------+-----------------------------------+
+##### 3.2.1 Usecase của User
 
-+-----------------------------------+-----------------------------------+
-| > **Use Case Name**               | > Xóa tài khoản người dùng.       |
-+===================================+===================================+
-+-----------------------------------+-----------------------------------+
+![](./vertopal_b0b32cbb01e440bf896de25203e9d5bd/media/image2.png)
 
-+-----------------------------------+-----------------------------------+
-| > **Mô tả**                       | > Admin thực hiện xóa vĩnh viễn   |
-|                                   | > tài khoản của người dùng        |
-+===================================+===================================+
-| > **Điều kiện**                   | > \- Admin đã được cấp quyền      |
-|                                   | > chỉnh sửa.                      |
-|                                   | >                                 |
-|                                   | > \- Những người dùng bịquản lý   |
-|                                   | > là translator và user.          |
-+-----------------------------------+-----------------------------------+
-| > **Luồng chính**                 | > 1\. Admin mởdanh sách lưu       |
-|                                   | > trữngười dùng.                  |
-|                                   | >                                 |
-|                                   | > 2\. Admin chọn Translator đểxóa |
-|                                   | > quyền xuống User. HOẶC, chọn    |
-|                                   | > User đểthêm quyền Translator.   |
-|                                   | >                                 |
-|                                   | > 3\. Admin xác nhận và quay      |
-|                                   | > trởlại màn hình chính.          |
-+-----------------------------------+-----------------------------------+
-| > **Luồng phụ**                   | > Ởbước 1, dashboard hiện danh    |
-|                                   | > sách tất cảngười dùng nhưng     |
-|                                   | > chỉhiện thịnút cập nhật ởcác    |
-|                                   | > người dùng có vai trò là        |
-|                                   | > Translator hoặc User.           |
-|                                   | >                                 |
-|                                   | > Ởbước 3, hệthống thực hiện cập  |
-|                                   | > nhật thông tin và trảvềthông    |
-|                                   | > tinđã cập nhật cho người dùng.  |
-+-----------------------------------+-----------------------------------+
+| Use Case Name | Đăng nhập |
+|---------------|-----------|
+| **Mô tả**     | User có thể đăng nhập tài khoản vào hệ thống và sử dụng các chức năng trong đó. |
+| **Điều kiện** | User chưa đăng nhập vào hệ thống |
+| **Luồng chính** | 1. User truy cập vào trang web quản lý. Nhấn vào mục “Login”<br>2. Hệ thống hiển thị Form Login.<br>3. User nhập vào các thông tin đăng nhập.<br>4. Nếu thông tin đăng nhập đúng, cập nhật thông tin vào hệ thống. |
+| **Luồng phụ** | Ở bước 4, nếu thông tin đăng nhập sai sẽ hiển thị thông báo cho người
+dùng |
 
-> 3.2.4 Usecase của Student
->
-> ![](vertopal_a4b7f6ead3a04d33ac649a539e6234f8/media/image5.png){width="6.729166666666667in"
-> height="4.458333333333333in"}
+| Use Case Name | Đăng xuất |
+|---------------|-----------|
+| **Mô tả**     | User sau khi sử dụng hệ thống xong có thể đăng xuất tài khoản để tránh bị kẻ lợi dụng |
+| **Điều kiện** | User đã đăng nhập vào hệ thống |
+| **Luồng chính** | 1. User tìm kiếm mục “Log out” trên hệ thống.<br>2. User nhấp vào Logout và confirm đăng xuất.<br>|
+| **Luồng phụ** | Ở bước 2, hệ thống sẽ hiển thị pop-up form để xác định đăng xuất. |
 
-+-----------------------------------+-----------------------------------+
-| > **Use Case Name**               | > Sửdụng bản dịch.                |
-+===================================+===================================+
-| > **Mô tả**                       | > Khi học viên vừa mởvào học      |
-|                                   | > liệu, extension lấy thông tin   |
-|                                   | > cần thiết, gửi tới Backend và   |
-|                                   | > hiển thịlại kết quảdịch thuật   |
-|                                   | > Backend trảvề.                  |
-+-----------------------------------+-----------------------------------+
-| > **Điều kiện**                   | > \- Học viên đã cài đặt          |
-|                                   | > Extension FUNiX Passport.       |
-|                                   | >                                 |
-|                                   | > \- Học liệu viết/nói tiếng Anh. |
-|                                   | >                                 |
-|                                   | > \- Học liệu thuộc quản lý, giáo |
-|                                   | > trình môn học FUNiX.            |
-+-----------------------------------+-----------------------------------+
-| > **Luồng chính**                 | > 1\. Học viên truy cập tới học   |
-|                                   | > liệu tiếng anh bất kì thuộc     |
-|                                   | > hệthống FUNiX.                  |
-|                                   | >                                 |
-|                                   | > 2\. Học viên chọn xác nhận muốn |
-|                                   | > xem bản dịch video/document     |
-|                                   | > này.                            |
-|                                   | >                                 |
-|                                   | > 3\. Học viên xem học liệu bằng  |
-|                                   | > phụđề/bản dịch tiếng Việt.      |
-|                                   | >                                 |
-|                                   | > Extension lấy course_id và      |
-|                                   | > video_id (đối với MOOC) hoặc    |
-|                                   | > url (đối với document) và gửi   |
-|                                   | > vềbackend.                      |
-|                                   | >                                 |
-|                                   | > 4\. Backend thực hiện tìm kiếm  |
-|                                   | > trong kho tài liệu.             |
-|                                   | >                                 |
-|                                   | > 5\. Backend lấy file dịch thuật |
-|                                   | > ứng với thông tin file được     |
-|                                   | > extension cung cấp.             |
-+-----------------------------------+-----------------------------------+
-| > **Luồng phụ**                   | > Sau bước 2, Extension lấy       |
-|                                   | > course_id và video_id (đối với  |
-|                                   | > MOOC) hoặc url (đối với         |
-|                                   | > document) và gửi vềbackend.     |
-|                                   | > Backend thực hiện tìm kiếm      |
-|                                   | > trong kho tài liệu. Backend lấy |
-|                                   | > file dịch thuật ứng với thông   |
-|                                   | > tin file được extension cung    |
-|                                   | > cấp và gửi lại Extension.       |
-|                                   | >                                 |
-|                                   | > Extension hiển thay đổi giao    |
-|                                   | > diện trang web và hiển thịcho   |
-|                                   | > người dùng.                     |
-+-----------------------------------+-----------------------------------+
+##### 3.2.2 Usecase của Translator
 
-+-----------------------------------+-----------------------------------+
-| > **Use Case Name**               | > Bật/Tắt Extension               |
-+===================================+===================================+
-| > **Mô tả**                       | > Học viên có thểbật hoặc tắt     |
-|                                   | > extension này bằng cách truy    |
-|                                   | > cập vào Extension store hoặc    |
-|                                   | > tắt trực tiếp bằng Develop      |
-|                                   | > tool.                           |
-+-----------------------------------+-----------------------------------+
-| > **Điều kiện**                   | > Học viên đã cài đặt Extension   |
-|                                   | > FUNiX Passport.                 |
-+-----------------------------------+-----------------------------------+
-| > **Luồng chính**                 | > Có 2 cách triển khai:\          |
-|                                   | > Cách 1: Học viên tắt extension  |
-|                                   | > bằng extension store.           |
-|                                   | >                                 |
-|                                   | > Cách 2: Học viên sửdụng         |
-|                                   | > Developer tools đểvô hiệu hóa   |
-|                                   | > extension trên 1 trang web nhất |
-|                                   | > định.                           |
-+-----------------------------------+-----------------------------------+
+![](./vertopal_b0b32cbb01e440bf896de25203e9d5bd/media/image3.png)
 
-+-----------------------------------+-----------------------------------+
-| > **Luồng phụ**                   |                                   |
-+===================================+===================================+
-+-----------------------------------+-----------------------------------+
+| Use Case Name | Upload file phụ đề |
+|---------------|-----------|
+| **Mô tả**     | Sau khi thực hiện dịch xong tài liệu (video MOOC hoặc trang web),<br>Translator tiến hành đăng tải file dịch thuật lên hệ thống. |
+| **Điều kiện** | User chưa đăng nhập vào hệ thống |
+| **Luồng chính** | 1. Translator truy cập vào trang web quản lý, nhập password để truy cập vào dashboard lưu file.<br>2. Nhấn vào mục “Đăng tải file”.<br>3. Translator tải file phụ đề/document lên.<br>4. Translator hoàn thành các thông tin cần thiết của file.<br>5. Translator nhấn “Submit”. Thao tác hoàn thành |
+| **Luồng phụ** | Ở bước thứ 3, hệ thống thực hiện kiểm tra định dạng, kích cỡ file.<br>Ở bước thứ 5, hệ thống kiểm tra các thông tin đã đúng định dạng, cú pháp |
 
-+-----------------------------------+-----------------------------------+
-| 3.3                               | > tổng quát của hệthống           |
-+===================================+===================================+
-+-----------------------------------+-----------------------------------+
+| Use Case Name | Tải file phụ đề |
+|---------------|-----------|
+| **Mô tả**     | Sau khi tìm thấy file cần tải, translator nhấp nút tải. |
+| **Điều kiện** | - Translator đã đăng nhập tài khoản được cấp quyền.<br>- File dịch đã tồn tại |
+| **Luồng chính** | 1. Translator truy cập vào trang web quản lý, nhập password để truy cập vào dashboard lưu file.<br>2. Translator mở bảng dashboard, và chọn file muốn tải.<br>3. Nhấp vào nút tải để tiến hành tải file|
+| **Luồng phụ** | |
 
-> ![](vertopal_a4b7f6ead3a04d33ac649a539e6234f8/media/image6.png){width="6.729166666666667in"
-> height="3.625in"}
+| Use Case Name | Tải xuống file đã dịch |
+|---------------|-----------|
+| **Mô tả**     | Sau khi thực hiện dịch xong tài liệu (video MOOC hoặc trang web), Translator tiến hành đăng tải file dịch thuật lên hệ thống. |
+| **Điều kiện** | - Translator đã đăng nhập tài khoản được cấp quyền.<br>- Học liệu gốc chưa có file dịch |
+| **Luồng chính** | 1. Translator truy cập vào trang web quản lý, nhập password để truy cập vào dashboard lưu file.<br>2. Nhấn vào mục “Đăng tải file”.<br>3. Translator tải file phụ đề/document lên<br>4. Translator hoàn thành các thông tin cần thiết của file.<br>5. Translator nhấn “Submit”. Thao tác hoàn thành|
+| **Luồng phụ** |Ở bước thứ 3, hệ thống thực hiện kiểm tra định dạng, kích cỡ file.<br>Ở bước thứ 5, hệ thống kiểm tra các thông tin đã đúng định dạng, cú pháp. |
 
-+-----------------------------------+-----------------------------------+
-| 3.3.1                             | > Phần Backend:                   |
-+===================================+===================================+
-+-----------------------------------+-----------------------------------+
 
-> ![](vertopal_a4b7f6ead3a04d33ac649a539e6234f8/media/image7.png){width="7.594443350831146in"
-> height="4.386111111111111in"}
->
-> 3.3.2 Phần Extension:
->
-> ![](vertopal_a4b7f6ead3a04d33ac649a539e6234f8/media/image8.png){width="5.615277777777778in"
-> height="3.551388888888889in"}
+| Use Case Name | Xem danh sách các file đã được upload |
+|---------------|-----------|
+| **Mô tả**     | Backend sẽ cung cấp 2 Dashboard, 1 bảng hiển thị các bản dịch phụ đề và 1 bảng hiển thị bản dịch Document. |
+| **Điều kiện** | - Translator đã đăng nhập tài khoản được cấp quyền. |
+| **Luồng chính** | 1. Translator truy cập vào trang web quản lý, nhập password để truy cập vào dashboard lưu file.<br>2. Translator xem 2 dashboard, 1 bảng lưu trữ file phụ đề, 1 bảng lưu
+trữ file document.|
+| **Luồng phụ** | |
 
-  -----------------------------------------------------------------------
-  3.4                                 
-  ----------------------------------- -----------------------------------
+| Use Case Name | Tìm kiếm các bản dịch theo bộ lọc |
+|---------------|-----------|
+| **Mô tả**     | Translator có thể tìm kiếm các bản dịch theo những bộ lọc sau: Tên bản dịch, Url, Người dịch, Course ID, Video ID. |
+| **Điều kiện** | - Translator đã đăng nhập tài khoản được cấp quyền |
+| **Luồng chính** | 1. Translator truy cập vào trang web quản lý, nhập password để truy cập vào dashboard lưu file.<br>2. Nhấn vào mục Tìm kiếm<br>3. Translator tìm nhập thẳng vào thanh tìm kiếm hoặc chọn theo bộ lọc có sẵn.<br>4. Translator xem những kết quả tìm kiếm trả về|
+| **Luồng phụ** |Máy chủ thực hiện tìm kiếm theo thông tin đã được cung cấp và trả lại những kết quả tìm kiếm trùng khớp |
 
-  -----------------------------------------------------------------------
 
-> ![](vertopal_a4b7f6ead3a04d33ac649a539e6234f8/media/image9.png){width="7.916666666666667in"
-> height="6.219444444444444in"}
+| Use Case Name | Xóa các file dịch thuật |
+|---------------|-----------|
+| **Mô tả**     | Sau khi tới file cần xóa, translator thực hiện xóa file. |
+| **Điều kiện** | - Translator đã đăng nhập tài khoản được cấp quyền.<br>- Học liệu gốc đã có file dịch |
+| **Luồng chính** | 1. Translator truy cập vào trang web quản lý, nhập password để truy cập vào dashboard lưu file.<br>1.5. Translator thực hiện tìm kiếm file cần xóa.<br>2. Translator nhấp vào dòng file cần xóa trong dashboard hoặc trong mục tìm kiếm.<br>3. Translator nhấn Xác nhận xóa file.|
+| **Luồng phụ** |Ở bước thứ 2, hệ thống hiện 1 pop-up form xác nhận xóa file. |
 
-**FUNiX**
+| Use Case Name |  Chỉnh sửa thông tin file |
+|---------------|-----------|
+| **Mô tả**     | Translator mở file cần chỉnh sửa và tiến hành cập nhật thông tin/file dịch thuật theo ý muốn. |
+| **Điều kiện** | - Translator đã đăng nhập tài khoản được cấp quyền.<br>- File học liệu đã tồn tại, đã có file phụ đề đính kèm. |
+| **Luồng chính** | 1. Translator truy cập vào trang web quản lý, nhập password để truy cập vào dashboard lưu file.<br>2. Translator nhấn vào mục để xem các bảng file hoặc thực hiện tìm kiếm file mong muốn.<br>3. Translator nhấp vào ô Edit và tiến hành cập nhật thông tin file.<br>4. Sau khi hoàn thành, translator thực hiện, xác nhận cập nhật thông tin.<br>4.5. Translator nhập lại những thông tin cập nhật sai định dạng, cú pháp. (nếu có)<br>5. Translator kiểm tra lại thông tin sau khi đã cập nhật.|
+| **Luồng phụ** |Ở bước thứ 2, hệ thống thực hiện kiểm tra định dạng, kích cỡ file.<br>Ở bước thứ 4, hệ thống kiểm tra định dạng, cú pháp và gửi cảnh báo về form chỉnh sửa.<br>Ở bước 5, hệ thống thực hiện cập nhật thông tin và trả về thông tin đã cập nhật cho người dùng. |
 
-**THE END**
+##### 3.2.3 Usecase của Admin
+
+![](./vertopal_b0b32cbb01e440bf896de25203e9d5bd/media/image4.png)
+
+| Use Case Name | Chỉnh sửa quyền của người dùng |
+|---------------|-----------|
+| **Mô tả**     | Admin vào Dashboard lưu trữ danh sách người dùng và thực hiện chỉnh sửa quyền. Có thể thêm hoặc xóa quyền. |
+| **Điều kiện** | - Admin đã được cấp quyền chỉnh sửa.<br>- Những người dùng bị quản lý là translator và user |
+| **Luồng chính** | 1. Admin truy cập vào trang web quản lý, nhập password để truy cập vào dashboard lưu thông tin người dùng.<br>2. Admin chọn Translator để xóa quyền xuống User. HOẶC, chọn User để thêm quyền Translator.<br>3. Admin xác nhận và quay trở lại màn hình chính|
+| **Luồng phụ** |Ở bước 1, dashboard hiện danh sách tất cả người dùng nhưng chỉ hiện thị nút cập nhật ở các người dùng có vai trò là Translator hoặc User.<br>Ở bước 3, hệ thống thực hiện cập nhật thông tin và trả về thông tin đã cập nhật cho người dùng. |
+
+| Use Case Name | Xóa tài khoản người dùng. |
+|---------------|-----------|
+| **Mô tả**     | Admin thực hiện xóa vĩnh viễn tài khoản của người dùng |
+| **Điều kiện** | - Admin đã được cấp quyền chỉnh sửa.<br>- Những người dùng bị quản lý là translator và user |
+| **Luồng chính** | 1. Admin mở danh sách lưu trữ người dùng.<br>2. Admin chọn Translator để xóa quyền xuống User. HOẶC, chọn User để thêm quyền Translator.<br>3. Admin xác nhận và quay trở lại màn hình chính.|
+| **Luồng phụ** |Ở bước 1, dashboard hiện danh sách tất cả người dùng nhưng chỉ hiện thị nút cập nhật ở các người dùng có vai trò là Translator hoặc User.<br>Ở bước 3, hệ thống thực hiện cập nhật thông tin và trả về thông tin đã cập nhật cho người dùng. |
+
+##### 3.2.4 Usecase của Student
+
+![](./vertopal_b0b32cbb01e440bf896de25203e9d5bd/media/image5.png)
+
+| Use Case Name | Sử dụng bản dịch. |
+|---------------|-----------|
+| **Mô tả**     | Khi học viên vừa mở vào học liệu, extension lấy thông tin cần thiết, gửi tới Backend và hiển thị lại kết quả dịch thuật Backend trả về. |
+| **Điều kiện** | - Học viên đã cài đặt Extension FUNiX Passport.<br>- Học liệu viết/nói tiếng Anh.<br>- Học liệu thuộc quản lý, giáo trình môn học FUNiX. |
+| **Luồng chính** | 1. Học viên truy cập tới học liệu tiếng anh bất kì thuộc hệ thống FUNiX.<br>2. Học viên chọn xác nhận muốn xem bản dịch video/document này.<br>3. Học viên xem học liệu bằng phụ đề/bản dịch tiếng Việt. Extension lấy course_id và video_id (đối với MOOC) hoặc url (đối với document) và gửi về backend.<br>4. Backend thực hiện tìm kiếm trong kho tài liệu.<br>5. Backend lấy file dịch thuật ứng với thông tin file được extension cung cấp.|
+| **Luồng phụ** |Sau bước 2, Extension lấy course_id và video_id (đối với MOOC) hoặc url (đối với document) và gửi về backend. Backend thực hiện tìm kiếm trong kho tài liệu. Backend lấy file dịch thuật ứng với thông tin file được extension cung cấp và gửi lại Extension. Extension hiển thay đổi giao diện trang web và hiển thị cho người dùng. |
+
+| Use Case Name | Bật/Tắt Extension |
+|---------------|-----------|
+| **Mô tả**     | Học viên có thể bật hoặc tắt extension này bằng cách truy cập vào Extension store hoặc tắt trực tiếp bằng Develop tool. |
+| **Điều kiện** | Học viên đã cài đặt Extension FUNiX Passport. |
+| **Luồng chính** | Có 2 cách triển khai:<br>Cách 1: Học viên tắt extension bằng extension store.<br>Cách 2: Học viên sử dụng Developer tools để vô hiệu hóa extension trên 1 trang web nhất định.|
+| **Luồng phụ** ||
+
+#### 3.3 Sơ đồ use case tổng quát của hệ thống
+
+Hình ảnh sơ đồ use case tổng quát mô tả các tương tác giữa các tác nhân (user, translator, admin, student) và hệ thống.
+
+![](./vertopal_b0b32cbb01e440bf896de25203e9d5bd/media/image6.png)
+
+3.3.1. Phần Backend
+
+![](./vertopal_b0b32cbb01e440bf896de25203e9d5bd/media/image7.png)
+
+3.3.2. Phần Extension
+
+![](./vertopal_b0b32cbb01e440bf896de25203e9d5bd/media/image8.png)
+
+#### 3.4 Class Diagram
+
+Hình ảnh sơ đồ class diagram mô tả các lớp trong hệ thống và mối quan hệ giữa chúng.
+
+![](./vertopal_b0b32cbb01e440bf896de25203e9d5bd/media/image9.png)
+
+# THE END
