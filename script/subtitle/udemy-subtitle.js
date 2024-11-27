@@ -148,7 +148,6 @@ function initComponents() {
 }
 
 function pageLoad(code) {
-	console.log(3 + '-udemy-subtitle');
 	startObserver();
 	if (code === 200) {
 		start(1, false);
