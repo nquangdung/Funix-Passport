@@ -21,4 +21,3 @@ Có 4 branch:
 + Và được bổ sung thêm nội dung ở README.md
 
 # Các thông tin bổ sung
-
