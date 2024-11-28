@@ -37,11 +37,21 @@ Có 4 branch ( Sau khi merge thì nó đã bị xóa nhánh global, nên link b�
 # Các thông tin bổ sung
 
 ## Sử dụng một số câu lệnh nâng cao
-ádadasd
 1. Git log
 ![alt text](image-5.png)
 
 2. Git Stash
 ![alt text](image-3.png)
+
+3. Git Blame
+![alt text](image-7.png)
+
+4. Git Diff
+![alt text](image-9.png)
+
+5. Git Revert
+![alt text](image-8.png)
+![alt text](image-10.png)
+
 
 
