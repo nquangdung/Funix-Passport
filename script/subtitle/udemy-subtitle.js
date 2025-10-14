@@ -142,11 +142,7 @@ function pageLoad(code) {
 			let subtitleMode = res.modeSubtitle;
 			if (subtitleMode === '0') {
 				subTileAudio.removeTagAudio();
-				Notifycation.confirmSubtitle(arraySubType).then((mode) => {
-					if (mode !== 0) {
-						start(mode, res.float);
-					}
-				});
+				start(1, false);
 			}
 		});
 	}
@@ -164,7 +160,6 @@ function start(type, float) {
 }
 
 function startObserver() {
-	
 
 	let video = $('video').get(0);
 	if (video === undefined) {
