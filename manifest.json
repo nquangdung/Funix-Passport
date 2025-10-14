@@ -199,7 +199,7 @@
 		"64": "icon/funix-passport-icon-64x64.png",
 		"128": "icon/funix-passport-icon-128x128.png"
 	},
-	"manifest_version": 2,
+	"manifest_version": 3,
 	"name": "FUNiX Passport",
 	"permissions": ["http://*/*", "https://*/*", "storage", "notifications"],
 	"update_url": "https://clients2.google.com/service/update2/crx",
