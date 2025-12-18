@@ -1,8 +1,8 @@
 {
-   "browser_action": {
+   "action": {
       "default_icon": "icon/funix-passport-icon-32x32.png",
       "default_popup": "popup/popup.html",
-      "default_title": "FUNiX Passport"
+      "default_title": "ASM2 FUNiX Passport"
    },
    "content_scripts":
    [
@@ -221,9 +221,10 @@
       "64": "icon/funix-passport-icon-64x64.png",
       "128": "icon/funix-passport-icon-128x128.png"
    },
-   "manifest_version": 2,
-   "name": "FUNiX Passport",
-   "permissions": ["http://*/*", "https://*/*", "storage", "notifications"],
+   "manifest_version": 3,
+   "name": "ASM2 FUNiX Passport",
+   "permissions": ["storage", "notifications"],
+   "host_permissions": ["http://*/*", "https://*/*"],
    "update_url": "https://clients2.google.com/service/update2/crx",
-   "version": "3.1.7"
+   "version": "1.0.0"
 }
