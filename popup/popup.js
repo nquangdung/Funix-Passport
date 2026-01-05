@@ -125,7 +125,7 @@ function getSettingData() {
 		chrome.storage.sync.get(['funixPassportSetting'], function (result) {
 			if (result.funixPassportSetting === undefined) {
 				resolve({
-					modeSubtitle: '1',
+					modeSubtitle: '0',
 					float: true,
 				});
 			} else {

@@ -54,7 +54,6 @@ var udaCitySubtitleLearn = {
 
 		self.initData().then((status) => {
 			if (status) {
-				console.log(self.arraySubType);
 				getSettingData().then((res) => {
 					let subtitleMode = res.modeSubtitle;
 					if (subtitleMode === '0') {
@@ -84,7 +83,6 @@ var udaCitySubtitleLearn = {
 		var url = window.location.pathname.replace(/\/instructions+/g, ''); // remove text /instructions in url
 		let id = url.split('/').splice(-1)[0];
 
-		console.log(id);
 		let request = {
 			content: 'POST Request',
 			requestUrl: 'https://funix-subtitle.firebaseapp.com/get',

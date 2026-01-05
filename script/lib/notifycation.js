@@ -62,7 +62,6 @@ class Notifycation {
 	 * @returns {Promise<any>}
 	 */
 	static confirmSubtitle(arraySubType = []) {
-		console.log(arraySubType);
 		return new Promise(function (resolve, reject) {
 			$.alert({
 				icon: '',
