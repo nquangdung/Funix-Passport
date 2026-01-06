@@ -41,7 +41,6 @@ class SubtitleHandling {
 				});
 			}
 		} else {
-			console.log('Error parse sub');
 		}
 
 		return result;

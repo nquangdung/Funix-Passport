@@ -21,7 +21,6 @@ $(document).ready(function () {
 
 const initSubtible = (video) => {
 	const id = $($('#rscpAu-ToolbarTitle')[0]).html();
-	console.log('ID: ' + id);
 	initData(video, id);
 };
 

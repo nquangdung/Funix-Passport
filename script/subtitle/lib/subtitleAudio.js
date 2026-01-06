@@ -19,35 +19,29 @@ var subTileAudio = {
 
 		// event pause
 		video.onpause = function () {
-			console.log('onpause');
 			subTileAudio.setCurrentTimeAudio(video);
 		};
 
 		// event play
 		video.onplay = function () {
-			console.log('onplay');
 			subTileAudio.setCurrentTimeAudio(video);
 		};
 
 		video.onseeked = function () {
-			console.log('seeked');
 			subTileAudio.setCurrentTimeAudio(video);
 		};
 
 		// on change volume
 		video.onvolumechange = function () {
-			console.log('onvolumechange');
 			subTileAudio.setCurrentTimeAudio(video);
 		};
 
 		video.onmute = function () {
-			console.log('onmute');
 			subTileAudio.setCurrentTimeAudio(video);
 		};
 
 		// on change speed
 		video.onratechange = function () {
-			console.log('onratechange');
 			subTileAudio.setCurrentTimeAudio(video);
 		};
 	},
@@ -129,12 +123,9 @@ var subTileAudio = {
 			'" src="' +
 			linkAudio +
 			'" controls="controls" style="width: 100%;display: none"></audio>';
-		console.log(idAppend);
-		console.log(tagAudio);
 		$(idAppend).append(tagAudio);
 
 		self.audio = document.getElementById(self.idTagAudio);
-		console.log('buildTagHtmlAudio');
 	},
 
 	/**

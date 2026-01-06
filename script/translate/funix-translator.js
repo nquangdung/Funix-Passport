@@ -28,7 +28,6 @@ class OnpageTranslator {
 	 * @returns {number}
 	 */
 	getIndex(domSelector, activeClass) {
-		console.log(2 + '-OnpageTranslator');
 		let list = $(domSelector);
 		for (let i = 0; i < list.length; i++) {
 			if ($(list[i]).hasClass(activeClass)) return i;
@@ -117,8 +116,6 @@ class OnpageTranslator {
 	gotData(dataVN, dataJP, isVN, isJP) {
 		let self = this;
 
-		console.log(4 + '-OnpageTranslator');
-
 		getSettingData().then((res) => {
 			let subtitleMode = res.modeSubtitle;
 			if (subtitleMode === '0') {
@@ -157,8 +154,6 @@ class OnpageTranslator {
 	 * @param float
 	 */
 	render(data, float) {
-		console.log(5 + '-OnpageTranslator');
-
 		let request = {
 			content: 'GET Request',
 			requestUrl: data.link,
@@ -220,8 +215,6 @@ class OnpageTranslator {
 	 * @param float
 	 */
 	waitContentLoad(data, float) {
-		console.log(7 + '-OnpageTranslator');
-
 		const LOAD_TIME = 2000;
 		const self = this;
 		setTimeout(function () {
@@ -241,8 +234,6 @@ class OnpageTranslator {
 	 * @param video
 	 */
 	renderTranscriptEdx(res, video) {
-		console.log(8 + '-OnpageTranslator');
-
 		if (video !== null) {
 			let dom = $($.parseHTML(res));
 			let element = null;
