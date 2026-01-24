@@ -20,8 +20,6 @@ const caption = '[class^="captions-display--captions-container"]',
 	direct_sub_node = '#funixSubtitle';
 
 async function initData() {
-	console.log(9 + '-udemy-subtitle');
-
 	vi = [];
 	eng = [];
 	jp = [];
@@ -116,8 +114,6 @@ async function initData() {
 }
 
 $(document).ready(function () {
-	console.log(1 + '-udemy-subtitle');
-
 	enable = false;
 	udemySubtitleObserver = new subtitleObserver(direct_sub_node); //Observe the paragraph
 	initComponents(); // Check if user change lesson.
@@ -130,7 +126,6 @@ $(document).ready(function () {
 });
 
 function initComponents() {
-	console.log(2 + '-udemy-subtitle');
 	// Setup Subtitle button
 	//initButton();----remove
 
@@ -148,7 +143,6 @@ function initComponents() {
 }
 
 function pageLoad(code) {
-	console.log(3 + '-udemy-subtitle');
 	startObserver();
 	if (code === 200) {
 			start(1, false);
@@ -156,8 +150,6 @@ function pageLoad(code) {
 }
 
 function start(type, float) {
-	console.log(4 + '-udemy-subtitle');
-
 	udemySubtitleObserver.mode = type;
 
 	$('#captions-menu').hide();
@@ -168,8 +160,6 @@ function start(type, float) {
 }
 
 function startObserver() {
-	console.log(5 + '-udemy-subtitle');
-
 	let video = $('video').get(0);
 	if (video === undefined) {
 		setTimeout(() => {
@@ -192,8 +182,6 @@ function startObserver() {
 }
 
 function initSubnode(mode) {
-	console.log(6 + '-udemy-subtitle');
-
 	const subtitleObject = $(
 		'<div class="captions-display--captions-container--1-aQJ"> <div class="captions-display--captions-cue-text--ECkJu" data-purpose="captions-cue-text" style="font-size: 26.36px; opacity: 0.75;justify-content: center;text-align: center;" id="funixSubtitle"></div> </div>'
 	);
@@ -215,8 +203,6 @@ function initSubnode(mode) {
 }
 
 function initButton() {
-	console.log(7 + '-udemy-subtitle');
-
 	// Init elements
 	button = $(
 		'<div data-purpose="captions-menu-button" class="menu--dropdown--3Vksr dropup btn-group"></div>'
@@ -282,8 +268,6 @@ function initButton() {
 }
 
 function setActiveButton(buttonActive) {
-	console.log(8 + '-udemy-subtitle');
-
 	viBtn.removeClass('active');
 	engBtn.removeClass('active');
 	offBtn.removeClass('active');
