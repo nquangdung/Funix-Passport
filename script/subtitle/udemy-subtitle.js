@@ -151,11 +151,13 @@ function pageLoad(code) {
 			let subtitleMode = res.modeSubtitle;
 			if (subtitleMode === '0') {
 				subTileAudio.removeTagAudio();
-				Notifycation.confirmSubtitle(arraySubType).then((mode) => {
-					if (mode !== 0) {
-						start(mode, res.float);
-					}
-				});
+				// Auto-enable the Vietnamese subtitle when one is available,
+				// instead of asking the user via a popup. The user can still
+				// switch language or turn it off via the floating menu.
+				if (arraySubType && arraySubType.length > 0) {
+					let mode = arraySubType.includes('vi') ? 1 : 2;
+					start(mode, res.float);
+				}
 			}
 		});
 	}
