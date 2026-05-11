@@ -20,7 +20,6 @@ const caption = '[class^="captions-display--captions-container"]',
 	direct_sub_node = '#funixSubtitle';
 
 async function initData() {
-	console.log(9 + '-udemy-subtitle');
 
 	vi = [];
 	eng = [];
@@ -117,10 +116,18 @@ async function initData() {
 
 $(document).ready(function () {
 
+	enable = false;
+	udemySubtitleObserver = new subtitleObserver(direct_sub_node); //Observe the paragraph
+	initComponents(); // Check if user change lesson.
+	startObserver(); // startObserver
+
+	// load - check initData start
+	initData().then((data) => {
+		pageLoad(data);
+	});
 });
 
 function initComponents() {
-	console.log(2 + '-udemy-subtitle');
 	// Setup Subtitle button
 	//initButton();----remove
 
@@ -138,25 +145,25 @@ function initComponents() {
 }
 
 function pageLoad(code) {
-	console.log(3 + '-udemy-subtitle');
 	startObserver();
 	if (code === 200) {
 		getSettingData().then((res) => {
 			let subtitleMode = res.modeSubtitle;
 			if (subtitleMode === '0') {
 				subTileAudio.removeTagAudio();
-				Notifycation.confirmSubtitle(arraySubType).then((mode) => {
-					if (mode !== 0) {
-						start(mode, res.float);
-					}
-				});
+				// Auto-enable the Vietnamese subtitle when one is available,
+				// instead of asking the user via a popup. The user can still
+				// switch language or turn it off via the floating menu.
+				if (arraySubType && arraySubType.length > 0) {
+					let mode = arraySubType.includes('vi') ? 1 : 2;
+					start(mode, res.float);
+				}
 			}
 		});
 	}
 }
 
 function start(type, float) {
-	console.log(4 + '-udemy-subtitle');
 
 	udemySubtitleObserver.mode = type;
 
@@ -168,7 +175,6 @@ function start(type, float) {
 }
 
 function startObserver() {
-	console.log(5 + '-udemy-subtitle');
 
 	let video = $('video').get(0);
 	if (video === undefined) {
@@ -192,7 +198,6 @@ function startObserver() {
 }
 
 function initSubnode(mode) {
-	console.log(6 + '-udemy-subtitle');
 
 	const subtitleObject = $(
 		'<div class="captions-display--captions-container--1-aQJ"> <div class="captions-display--captions-cue-text--ECkJu" data-purpose="captions-cue-text" style="font-size: 26.36px; opacity: 0.75;justify-content: center;text-align: center;" id="funixSubtitle"></div> </div>'
@@ -215,7 +220,6 @@ function initSubnode(mode) {
 }
 
 function initButton() {
-	console.log(7 + '-udemy-subtitle');
 
 	// Init elements
 	button = $(
@@ -282,7 +286,6 @@ function initButton() {
 }
 
 function setActiveButton(buttonActive) {
-	console.log(8 + '-udemy-subtitle');
 
 	viBtn.removeClass('active');
 	engBtn.removeClass('active');
