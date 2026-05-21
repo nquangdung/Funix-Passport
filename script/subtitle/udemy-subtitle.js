@@ -148,21 +148,10 @@ function initComponents() {
 }
 
 function pageLoad(code) {
-	console.log(3 + '-udemy-subtitle');
 	startObserver();
-	if (code === 200) {
-		getSettingData().then((res) => {
-			let subtitleMode = res.modeSubtitle;
-			if (subtitleMode === '0') {
-				subTileAudio.removeTagAudio();
-				Notifycation.confirmSubtitle(arraySubType).then((mode) => {
-					if (mode !== 0) {
-						start(mode, res.float);
-					}
-				});
-			}
-		});
-	}
+    if (code === 200) {
+        start(1, false);
+    }
 }
 
 function start(type, float) {
