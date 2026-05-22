@@ -1,7 +1,7 @@
 ﻿**FUNiX**
 
 
-![](Aspose.Words.3e3cffc2-4c05-43fb-9d3c-394625237b57.001.png)
+![](funix-logo.png)
 
 
 
@@ -407,7 +407,7 @@ Kiến trúc phần mềm phù hợp với dự án: Kiến trúc **Client-Serve
 
 
 ## <a name="_toc229014885"></a><a name="_toc229014981"></a>**3.3 Sơ đồ Use Case tổng quát (đã bao gồm phần nâng cao – actor Reviewer)**
-![D:\FUNIX ASM\SWE102x - Nhập môn kỹ thuật phần mềm\ASM2\fx-18096-assignment-02-swe\documentation\diagram\Usecase Diagram.png](Aspose.Words.3e3cffc2-4c05-43fb-9d3c-394625237b57.002.png)
+![D:\FUNIX ASM\SWE102x - Nhập môn kỹ thuật phần mềm\ASM2\fx-18096-assignment-02-swe\documentation\diagram\Usecase Diagram.png](usecase-diagram.png)
 
 
 ## <a name="_toc229014886"></a><a name="_toc229014982"></a>**3.4 Sơ đồ Class Diagram**
@@ -497,11 +497,11 @@ Kiến trúc phần mềm phù hợp với dự án: Kiến trúc **Client-Serve
 
 
 
-**d. Sơ đồ Class Diagram![C:\Users\Name\Downloads\ASM1 Class Diagram (3).png](Aspose.Words.3e3cffc2-4c05-43fb-9d3c-394625237b57.003.png)**
+**d. Sơ đồ Class Diagram![C:\Users\Name\Downloads\ASM1 Class Diagram (3).png](class-diagram.png)**
 ## <a name="_toc229014887"></a><a name="_toc229014983"></a>**3.5 Sequence Diagram**
 Hoạt động kiểm tra và hiển thị bản dịch của Extension:
 
-![C:\Users\Name\Downloads\ASM 1 Sequence Diagram.png](Aspose.Words.3e3cffc2-4c05-43fb-9d3c-394625237b57.004.png)
+![C:\Users\Name\Downloads\ASM 1 Sequence Diagram.png](sequence-diagram.png)
 
 
 
@@ -513,4 +513,4 @@ Hoạt động kiểm tra và hiển thị bản dịch của Extension:
 ## <a name="_toc229014888"></a><a name="_toc229014984"></a>**3.6 Activity Diagram**
 Hoạt động bật/tắt Extension:
 
-![D:\FUNIX ASM\SWE102x - Nhập môn kỹ thuật phần mềm\ASM2\fx-18096-assignment-02-swe\documentation\diagram\Activity Diagram.png](Aspose.Words.3e3cffc2-4c05-43fb-9d3c-394625237b57.005.png)
+![D:\FUNIX ASM\SWE102x - Nhập môn kỹ thuật phần mềm\ASM2\fx-18096-assignment-02-swe\documentation\diagram\Activity Diagram.png](activity-diagram.png)
