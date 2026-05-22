@@ -1,7 +1,7 @@
 ﻿**FUNiX**
 
 
-![](funix-logo.png)
+![](diagram/funix-logo.png)
 
 
 
@@ -407,7 +407,7 @@ Kiến trúc phần mềm phù hợp với dự án: Kiến trúc **Client-Serve
 
 
 ## <a name="_toc229014885"></a><a name="_toc229014981"></a>**3.3 Sơ đồ Use Case tổng quát (đã bao gồm phần nâng cao – actor Reviewer)**
-![D:\FUNIX ASM\SWE102x - Nhập môn kỹ thuật phần mềm\ASM2\fx-18096-assignment-02-swe\documentation\diagram\Usecase Diagram.png](usecase-diagram.png)
+![D:\FUNIX ASM\SWE102x - Nhập môn kỹ thuật phần mềm\ASM2\fx-18096-assignment-02-swe\documentation\diagram\Usecase Diagram.png](diagram/usecase-diagram.png)
 
 
 ## <a name="_toc229014886"></a><a name="_toc229014982"></a>**3.4 Sơ đồ Class Diagram**
@@ -497,11 +497,11 @@ Kiến trúc phần mềm phù hợp với dự án: Kiến trúc **Client-Serve
 
 
 
-**d. Sơ đồ Class Diagram![C:\Users\Name\Downloads\ASM1 Class Diagram (3).png](class-diagram.png)**
+**d. Sơ đồ Class Diagram![C:\Users\Name\Downloads\ASM1 Class Diagram (3).png](diagram/class-diagram.png)**
 ## <a name="_toc229014887"></a><a name="_toc229014983"></a>**3.5 Sequence Diagram**
 Hoạt động kiểm tra và hiển thị bản dịch của Extension:
 
-![C:\Users\Name\Downloads\ASM 1 Sequence Diagram.png](sequence-diagram.png)
+![C:\Users\Name\Downloads\ASM 1 Sequence Diagram.png](diagram/sequence-diagram.png)
 
 
 
