@@ -24,6 +24,25 @@ class Applieddigitalskills {
 			}
 		});
 	}
+    initComponent() {
+        this.initData().then((status) => {
+            if (status) {
+                getSettingData().then(res => {
+                    let subtitleMode = res.modeSubtitle;
+                    if (subtitleMode === "0") {
+                        Notifycation.confirmSubtitle(['vi']).then(mode => {
+                            if (mode !== 0) {
+                                this.createElement(mode);
+                            }
+                        });
+                    }
+                    // else if (subtitleMode === "0") {
+                    //    this.createElement(1);
+                    // } else if (subtitleMode === "2") {}
+                })
+            }
+        });
+    }
 
 	createElement(mode) {
 		// Add subtitle
