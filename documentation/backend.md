@@ -207,4 +207,3 @@ Quan hệ giữa các bảng:
 Backend của hệ thống FUNiX Passport chịu trách nhiệm quản lý người dùng, phân quyền, lưu trữ phụ đề, lưu trữ tài liệu và cung cấp dữ liệu cho Extension.
 
 Việc phân chia quyền giữa **User**, **Translator** và **Admin** giúp hệ thống đảm bảo tính bảo mật, dễ quản lý và thuận tiện trong quá trình vận hành.
-Tài liệu này mô tả thiết kế Backend dự kiến của hệ thống FUNiX Passport.
