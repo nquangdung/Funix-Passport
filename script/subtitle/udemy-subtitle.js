@@ -9,7 +9,6 @@ let vi,
 const caption = '[class^="captions-display--captions-container"]', direct_sub_node = '#funixSubtitle';
 
 async function initData() {
-
     vi = [];
     eng = [];
     jp = [];
@@ -110,7 +109,6 @@ async function initData() {
 }
 
 $(document).ready(function () {
-
     enable = false;
     udemySubtitleObserver = new subtitleObserver(direct_sub_node); //Observe the paragraph
     initComponents(); // Check if user change lesson.
