@@ -27,7 +27,7 @@ Nội dung của repository nhằm thực hành các thao tác quản lý mã ng
 - `Phát triển tính năng tự động bật phụ đề khi video được tải.`
 
 #### bug/clear_console_log
-- `Loại bỏ các câu lệnh `console.log` không cần thiết nhằm làm sạch mã nguồn.`
+- Loại bỏ các câu lệnh `console.log` không cần thiết nhằm làm sạch mã nguồn.
 
 #### documentation
 - `Cập nhật và bổ sung tài liệu cho dự án.`
@@ -46,5 +46,5 @@ Trong quá trình thực hiện Assignment, repository đã sử dụng các ch�
 
 ## Credit
 
-``Repository tác giả:`` **https://gitlab.com/anhndfx00424/funix-passport-assignment-swe**
+``Repository gốc:`` **https://gitlab.com/anhndfx00424/funix-passport-assignment-swe**
 ``Repository forked (GitLab):`` **https://gitlab.com/anhndfx00424/funix-passport-assignment-swe**
