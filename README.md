@@ -31,6 +31,7 @@ Nội dung của repository nhằm thực hành các thao tác quản lý mã ng
 
 #### documentation
 - `Cập nhật và bổ sung tài liệu cho dự án.`
+#### backend
 
 - Bổ sung tài liệu mô tả thiết kế Backend dự kiến của hệ thống FUNiX Passport.
 
@@ -49,6 +50,4 @@ Trong quá trình thực hiện Assignment, repository đã sử dụng các ch�
 ## Credit
 
 ``Repository gốc:`` **https://gitlab.com/anhndfx00424/funix-passport-assignment-swe**
-
 ``Repository forked (GitLab):`` **https://github.com/nguyenquangdungfx28972/Fx28972-assignment-swe/tree/master**
-
