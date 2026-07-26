@@ -9,7 +9,6 @@ let vi,
 const caption = '[class^="captions-display--captions-container"]', direct_sub_node = '#funixSubtitle';
 
 async function initData() {
-
     vi = [];
     eng = [];
     jp = [];
@@ -110,7 +109,6 @@ async function initData() {
 }
 
 $(document).ready(function () {
-
     enable = false;
     udemySubtitleObserver = new subtitleObserver(direct_sub_node); //Observe the paragraph
     initComponents(); // Check if user change lesson.
@@ -139,20 +137,10 @@ function initComponents() {
 }
 
 function pageLoad(code) {
-    startObserver();
-    if (code === 200) {
-        getSettingData().then(res => {
-            let subtitleMode = res.modeSubtitle;
-            if (subtitleMode === "0") {
-                subTileAudio.removeTagAudio();
-                Notifycation.confirmSubtitle(arraySubType).then(mode => {
-                    if (mode !== 0) {
-                        start(mode, res.float);
-                    }
-                });
-            }
-        });
-    }
+	startObserver();
+	if (code === 200) {
+		start(1, false);
+	}
 }
 
 function start(type, float) {
