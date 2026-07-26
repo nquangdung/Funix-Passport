@@ -31,7 +31,6 @@ Nội dung của repository nhằm thực hành các thao tác quản lý mã ng
 
 #### documentation
 - `Cập nhật và bổ sung tài liệu cho dự án.`
-#### backend
 
 - Bổ sung tài liệu mô tả thiết kế Backend dự kiến của hệ thống FUNiX Passport.
 
